@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(to right,#ff9a9e,#fad0c4e0);
+    color:#0a0a0a;
+    text-align:center;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+h1{
+    font-size:40px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:#ff4d6d;
+    color:#111;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff1c4d;
+}
+
+.gallery img{
+    width:200px;
+    margin:15px;
+    border-radius:20px;
+    transition:0.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.1);
+}
+
+/* wish */
+#wish{
+    max-width:800px;
+    margin:30px auto;
+    white-space:pre-wrap;
+}
+
+/* single photo page */
+.single-photo img{
+    width:260px;
+    border-radius:20px;
+    margin:20px 0;
+}
+
+.caption{
+    max-width:600px;
+    margin:0 auto 20px;
+    line-height:1.8;
+}
+
+/* hearts */
+.heart{
+    position:fixed;
+    top:-10%;
+    color:red;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{top:-10%;}
+    100%{top:110%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>🎂 Happy Birthday MyBabyBoy! 🎂</h1>
+    <img src="first.jpeg" style="width:200px;border-radius:20px;">
+    <p>Click for a surprise 💕</p>
+    <button id="surpriseBtn">Click Me 🎁</button>
+    <br><br>
+    <button class="next" data-next="page2">Next ➜ 📸</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Our Memories 💞</h1>
+    <div class="gallery">
+        <img src="mm.jpeg">
+        <img src="bbb.jpeg">
+        <img src="yy.jpeg">
+    </div>
+
+        <div class="gallery">
+        <img src="nn.jpeg">
+        <img src="jj.jpeg">
+        <img src="kk.jpeg">
+    </div>
+    <button class="next" data-next="page3">Next ➜ 💌</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>💖 Birthday Wish 💖</h1>
+    <p id="wish"></p>
+    <br><br>
+    <img src="aa.jpeg" style="width:200px;border-radius:20px;">
+    <br><br>
+
+    <button id="showWish">Show My Wish 💝</button>
+    <br><br>
+    <button class="next" data-next="page4">Next ➜ 📷</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>💞 A Special Moment</h1>
+    <div class="single-photo">
+        <img src="hh.jpeg">
+        <p class="caption">
+            This moment will always stay in my heart 🤍 
+             
+            One picture, but a thousand memories with you.
+        </p>
+    </div>
+    <button class="next" data-next="page5">Next ➜ 💖</button>
+    <br><br>
+    <button class="next" data-next="page3">Back ⬅</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+    <h1>💗 Another Memory</h1>
+    <div class="single-photo">
+        <img src="oo.jpeg">
+        <p class="caption">
+            With you, everything feels safe, calm, and full of love 🥹  
+            Thank you for being my home.
+        </p>
+    </div>
+    <button class="next" data-next="page1">Back Home 🏠</button>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".next").click(function(){
+        $(".page").removeClass("active");
+        $("#" + $(this).data("next")).addClass("active");
+    });
+
+    $("#surpriseBtn").click(function(){
+        alert("🎉 I LOVE YOU SO MUCH MYBABY ❤️🎂");
+    });
+
+    let typingInterval;
+
+    $("#showWish").click(function(){
+        clearInterval(typingInterval);
+        $("#wish").html("");
+
+        let text =
+`Happy Birthday mybaby boy❤️
+
+On this special day, I just want you to know how thankful I am to have you in my life. You are not just my boyfriend you are my best friend, my comfort, and my safe place. Every moment with you means so much to me, and I truly cherish every memory we’ve created together.
+
+I pray that this new year of your life brings you endless happiness, good health, success, and peace. Semoga semua impian dan cita-cita you tercapai jangan pernah rasa give up, I selalu ada untuk jadi supportive you baby time you lost, time you nak give up, time you rasa diri you hilang, please jadikan I tempat untuk you meluah semua rasa resah you, takut you, I ada untuk you eheh orang kedua selepas ummi . I hope you’ll always be surrounded by love, positivity, and people who truly appreciate you just like how I appreciate you so much
+
+No matter where life takes us, I want you to know that I’ll always be here for you. I’ll support you, believe in you, and love you with all my heart. I look forward to celebrating many more birthdays with you in the future, creating more memories, laughter, and love together. 
+
+Happy Birthday mybaby 🎂❤️ 
+You mean the world to me, today and always. 
+I love you more than words can ever explain 💕`;
+
+        let i = 0;
+        typingInterval = setInterval(function(){
+            if(i < text.length){
+                $("#wish").append(text.charAt(i));
+                i++;
+            } else {
+                clearInterval(typingInterval);
+            }
+        }, 35);
+    });
+
+    setInterval(function(){
+        let heart = $("<div class='heart'>❤️</div>");
+        heart.css({
+            left: Math.random()*100 + "vw",
+            fontSize: Math.random()*30 + 15 + "px"
+        });
+        $("body").append(heart);
+        setTimeout(()=>heart.remove(),5000);
+    },300);
+
+});
+</script>
+
+</body>
+</html>
